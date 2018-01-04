@@ -1,0 +1,2 @@
+The Sacrina Python is released under the following license:
+
