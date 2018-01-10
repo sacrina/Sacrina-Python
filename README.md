@@ -1,4 +1,4 @@
-# Sacrina-Python
+# Sacrina Python SDK
 
 ## System Requirements
 
