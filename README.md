@@ -6,14 +6,22 @@ Sacrina Python SDK runs on Linux OS and Python 3.
 
 ## Installation
 
+### Use pip
+
+Run the following command to install:
+
+    pip install sacrina
+    
+### Use git
+
 Clone the repo:
 
-    git clone https://github.com/sacrina/Sacrina-Python.git
+    git clone https://github.com/sacrina/sacrina-python.git
 
-Go into the Sacrina-Python folder, install the requirements using pip and install using setup.py:
+Go into the sacrina-python folder, install the requirements using pip and install using setup.py:
 
     pip install -r requirements.txt
-	python setup.py install
+    python setup.py install
 
 ## Configuration
 
