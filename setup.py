@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'sacrinasdk'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'sacrina'))
 
 long_description="""
 Python library for Sacrina API
@@ -9,34 +9,31 @@ Python library for Sacrina API
 
 license='Sacrina Lisence'
 
-url='https://github.com/sacrina/Sacrina-Python/'
+url='https://github.com/sacrina/sacrina-python/'
 
 setup(
-  name='Sacrina-Python',
+  name='sacrina',
   version= '0.1',
-  author='Sacrina',
-  author_email='admin@sacrina.com',
-  packages=['sacrinasdk'],
+  author='S.S.Hussain',
+  author_email='contact@sacrina.com',
+  packages=['sacrina'],
   scripts=[],
   url=url,
   license=license,
-  description='',
-  long_description='',
-  package_data={'sacrinasdk': ['data/*.crt.pem']},
-  install_requires=['requests>=1.0.0', 'six>=1.0.0', 'pyopenssl>=0.15'],
+  description=long_description,
+  long_description=long_description,
+  install_requires=['requests>=2.18.4'],
   classifiers=[
     'Intended Audience :: Developers',
     'Natural Language :: English',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Programming Language :: Python :: 2',
-    'Programming Language :: Python :: 2.6',
-    'Programming Language :: Python :: 2.7',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.3',
     'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: Implementation :: PyPy',
     'Topic :: Software Development :: Libraries :: Python Modules'
   ],
-  keywords=['sacrina', 'rest', 'sdk']
+  keywords=['sacrina', 'rest', 'sdk', 'sacrina-api']
 )

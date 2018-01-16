@@ -2,8 +2,8 @@
 import requests
 import json
 
-class sacrinasdk:
-    '''Use Sacrina API'''
+class sacrinarest:
+    '''Use Sacrina API in python'''
 
     def __init__(self):
         self.key = None
