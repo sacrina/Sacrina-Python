@@ -17,7 +17,6 @@ setup(
   url='https://github.com/sacrina/sacrina-python/',
   download_url='https://github.com/sacrina/sacrina-python/archive/master.zip',
   license='Sacrina Lisence',
-  description=long_description,
   long_description=long_description,
   install_requires=['requests>=2.18.4'],
   classifiers=[
