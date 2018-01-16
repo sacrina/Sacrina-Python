@@ -7,10 +7,6 @@ long_description="""
 Python library for Sacrina API
   """
 
-license='Sacrina Lisence'
-
-url='https://github.com/sacrina/sacrina-python/'
-
 setup(
   name='sacrina',
   version= '0.1',
@@ -18,8 +14,9 @@ setup(
   author_email='contact@sacrina.com',
   packages=['sacrina'],
   scripts=[],
-  url=url,
-  license=license,
+  url='https://github.com/sacrina/sacrina-python/',
+  download_url='https://github.com/sacrina/sacrina-python/archive/master.zip',
+  license='Sacrina Lisence',
   description=long_description,
   long_description=long_description,
   install_requires=['requests>=2.18.4'],
