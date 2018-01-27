@@ -110,6 +110,21 @@ class sacrinarest:
             response_json = json.loads(response.text)
             status = response_json['status']
             return status
+        
+        
+    #create a new optional feature
+
+    def create_optional_feature(self, keywords, model_id=self.model_id):
+        url = 'https://sacrina.com/REST/learning/optional_features/'
+        params = {'keywords': keywords,'model': 'https://sacrina.com/REST/learning/models/' + str(model_id) + '/'}
+        response = requests.post(url, headers = self.headers, data = params, verify=False)
+        if response.status_code != 201:
+            return "error"
+        else:
+            response_json = json.loads(response.text)
+            self.model_id = response_json['id']
+            return response.text
+        
 
     #create a project with the model
     def create_project(self,gen, sector_min, sector_max):
