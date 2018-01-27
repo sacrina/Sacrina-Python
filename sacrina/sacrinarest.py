@@ -110,11 +110,73 @@ class sacrinarest:
             response_json = json.loads(response.text)
             status = response_json['status']
             return status
+        
+        
+    #create a new optional feature
+
+    def create_optional_feature(self, keywords, model_id=self.model_id):
+        url = 'https://sacrina.com/REST/learning/optional_features/'
+        params = {'keywords': keywords,'model': 'https://sacrina.com/REST/learning/models/' + str(model_id) + '/'}
+        response = requests.post(url, headers = self.headers, data = params, verify=False)
+        if response.status_code != 201:
+            return "error"
+        else:
+            response_json = json.loads(response.text)
+            self.model_id = response_json['id']
+            return response.text
+        
+    #add a sample to optional feature
+
+    def add_optional_feature_sample(self, optional_feature_id=self.optional_feature_id, title, content):
+        url = 'https://sacrina.com/REST/learning/optional_feature_samples/'
+        params = {'title': title, 'content' : content,'optional_feature': 'https://sacrina.com/REST/learning/optional_features/' + str(optional_feature_id) + '/'}
+        response = requests.post(url, headers = self.headers, data = params, verify=False)
+        if response.status_code != 201:
+            return "error"
+        else:
+            response_json = json.loads(response.text)
+            self.model_id = response_json['id']
+            return response.text
+        
+    #select an optional feature
+    
+    def select_optional_feature(self, optional_feature_id):
+        self.optional_feature_id = optional_feature_id
+        url = 'https://sacrina.com/REST/learning/optional_features/' + str(self.optional_feature_id) + '/'
+        response = requests.get(url, headers = self.headers, verify=False)
+        return response.text
+        if response.status_code != 200:
+            return "error"
+        else:
+            return response.text    
+        
+        
+    #extract optional feature
+    def extract_optional_feature(self):
+        url = 'https://sacrina.com/REST/learning/optional_features/' + + str(self.optional_feature_id) + '/?extract'
+        response = requests.get(url, headers = self.headers, verify=False)
+        if response.status_code != 200:
+            return "error"
+        else:
+            return response.text
+        
+    #check optional feature status
+    def check_optional_feature_status(self):
+        url = 'https://sacrina.com/REST/learning/optional_features/' + str(self.optional_feature_id) + '/'
+        response = requests.get(url, headers = self.headers, verify=False)
+        if response.status_code != 200:
+            return "error"
+        else:
+            return response.text
+        
 
     #create a project with the model
-    def create_project(self,gen, sector_min, sector_max):
+    def create_project(self,gen, sector_min, sector_max, optional_feature_ids):
         url = 'https://sacrina.com/REST/production/projects/'
-        params = {'name':'myproject','model': 'https://sacrina.com/REST/learning/models/' + str(self.model_id) + '/', 'gen': gen, 'sector_min': sector_min, 'sector_max': sector_max }
+        optional_features = []
+        for id in optional_feature_ids:
+            optional_features.append('https://sacrina.com/REST/learning/optional_features/' + str(self.optional_feature_id) + '/')
+        params = {'name':'myproject','model': 'https://sacrina.com/REST/learning/models/' + str(self.model_id) + '/', 'gen': gen, 'sector_min': sector_min, 'sector_max': sector_max, optional_features: optional_features }
         response = requests.post(url, headers = self.headers, data = params, verify=False)
         if response.status_code != 201:
             return "error"
