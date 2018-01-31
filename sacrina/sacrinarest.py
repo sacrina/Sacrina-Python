@@ -171,12 +171,13 @@ class sacrinarest:
         
 
     #create a project with the model
-    def create_project(self,gen, sector_min, sector_max, optional_feature_ids):
+    def create_project(self,gen_min=None, gen_max=None sector_min=None, sector_max=None, limit=None, optional_feature_ids=None):
         url = 'https://sacrina.com/REST/production/projects/'
-        optional_features = []
-        for id in optional_feature_ids:
-            optional_features.append('https://sacrina.com/REST/learning/optional_features/' + str(self.optional_feature_id) + '/')
-        params = {'name':'myproject','model': 'https://sacrina.com/REST/learning/models/' + str(self.model_id) + '/', 'gen': gen, 'sector_min': sector_min, 'sector_max': sector_max, optional_features: optional_features }
+        if optional_feature_ids:
+            optional_features = []
+            for id in optional_feature_ids:
+                optional_features.append('https://sacrina.com/REST/learning/optional_features/' + str(self.optional_feature_id) + '/')
+        params = {'name':'myproject','model': 'https://sacrina.com/REST/learning/models/' + str(self.model_id) + '/', 'gen_min': gen_min, 'gen_max': gen_max, 'sector_min': sector_min, 'sector_max': sector_max, 'limit': limit, optional_features: optional_features }
         response = requests.post(url, headers = self.headers, data = params, verify=False)
         if response.status_code != 201:
             return "error"
